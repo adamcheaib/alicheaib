@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Design</title>
     <link rel="stylesheet" href="../category_css.css">
-    <link rel="stylesheet" href="../">
 </head>
 <body>
 <header>
@@ -138,13 +137,8 @@
     </div>
 </section>
 
-<dialog>
-    <img src=""></img>
-</dialog>
 <script>
     const all_images = document.querySelectorAll(".item_container");
-    const dialog = document.querySelector("dialog");
-    dialog.onclick = () => dialog.close();
 
     all_images.forEach(item => {
         item.style.opacity = 0;
@@ -160,10 +154,6 @@
         const ob = new IntersectionObserver(show_image);
         ob.observe(item);
 
-        item.onclick = () => {
-            dialog.showModal();
-            dialog.querySelector("img").src = item.querySelector("img").src;
-        }
     })
 
 </script>

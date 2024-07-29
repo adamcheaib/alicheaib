@@ -14,6 +14,11 @@ header {
     align-self: end;
 }
 
+header > a {
+    color: white;
+    text-decoration: none;
+}
+
 #current_page {
     pointer-events: none;
     user-select: none;
@@ -43,9 +48,12 @@ header {
 .shown {
     opacity: 1;
     animation-name: show_image;
-    animation-duration: 1200ms;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-    animation-delay: 500ms;
+    animation-delay: 200ms;
+    position: relative;
+    top: 100px;
 }
 
 .item_container > img {
@@ -53,27 +61,53 @@ header {
     width: 100%;
 }
 
-dialog {
-    margin-top: 30px;
-    height: 90vh;
-    border: none;
-    animation-name: dialog_entrance;
-    animation-duration: 400ms;
-    animation-fill-mode: forwards;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+div.item_container {
+    transition: border 200ms, box-shadow 200ms, transform 200ms;
 }
 
-dialog > img {
-    height: 100%;
-    width: 100%;
-    max-width: 1000px;
+div.item_container:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow:  0px 0px 10px 3px black;
+    border: solid 1px black;
+    transition: border 200ms, box-shadow 200ms, transform 200ms;
 }
+
+#overlay {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-rows: 0.1fr 0.9fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+#close_btn {
+    justify-self: center;
+    align-self: end;
+    padding-right: 15px;
+    font-size: 52px;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    grid-column: 3;
+}
+
+#dialog_img {
+    max-height: 100vh;
+    max-width: 90vw;
+    align-self: center;
+    justify-self: center;
+    grid-column: 1 / 4;
+}
+
 @keyframes show_image {
     from {
         position: relative;
-        top: 30px;
+        top: 100px;
         opacity: 0;
     }
 
