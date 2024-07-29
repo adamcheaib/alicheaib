@@ -12,6 +12,11 @@ header {
     justify-content: space-evenly;
     font-size: clamp(22px, 3vw, 30px);
     align-self: end;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 100000000;
+    transition: top 200ms;
 }
 
 header > a {
@@ -56,14 +61,34 @@ header > a {
     top: 100px;
 }
 
+div.item_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: border 200ms, box-shadow 200ms, transform 200ms;
+}
+
+div.item_container > * {
+    grid-column: 1;
+    grid-row: 1;
+}
+
 .item_container > img {
     height: 100%;
     width: 100%;
 }
 
-div.item_container {
-    transition: border 200ms, box-shadow 200ms, transform 200ms;
+.item_container > a {
+    justify-self:end;
+    height: max-content;
+    width: max-content;
 }
+
+.item_container > a > img {
+    height: 75px;
+    width: 75px;
+}
+
 
 div.item_container:hover {
     cursor: pointer;
@@ -76,14 +101,16 @@ div.item_container:hover {
 #overlay {
     height: 100vh;
     width: 100vw;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
     display: grid;
-    grid-template-rows: 0.1fr 0.9fr;
+    grid-template-rows: 0.1fr max-content 0.2fr;
     grid-template-columns: 1fr 1fr 1fr;
     position: fixed;
     top: 0;
     left: 0;
     visibility: hidden;
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 300ms;
 }
 
 #close_btn {
@@ -97,11 +124,22 @@ div.item_container:hover {
 }
 
 #dialog_img {
-    max-height: 100vh;
+    max-height: 85vh;
     max-width: 90vw;
-    align-self: center;
+    align-self: start;
     justify-self: center;
     grid-column: 1 / 4;
+}
+
+#to_youtube_container {
+    justify-self: center;
+    align-self: center;
+    width: 75%;
+    grid-column: 2;
+}
+
+#to_youtube_video {
+    width: 100%;
 }
 
 @keyframes show_image {
@@ -119,11 +157,11 @@ div.item_container:hover {
 
 @keyframes dialog_entrance {
     from {
-        opacity: 0;
+        backdrop-filter: blur(0);
     }
 
     to {
-        opacity: 1;
+        backdrop-filter: blur(10px);
     }
 }
 
