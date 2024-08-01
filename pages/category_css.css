@@ -101,10 +101,11 @@ div.item_container:hover {
 #overlay {
     height: 100vh;
     width: 100vw;
-    background: rgba(0,0,0,0.8);
-    display: grid;
-    grid-template-rows: 0.1fr max-content 0.2fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -113,34 +114,42 @@ div.item_container:hover {
     transition: backdrop-filter 300ms;
 }
 
-#close_btn {
-    justify-self: center;
-    align-self: end;
-    padding-right: 15px;
-    font-size: 52px;
-    color: white;
-    text-shadow: 0px 0px 5px black;
-    grid-column: 3;
+#shadow_background {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
 }
 
-#dialog_img {
+
+#dialog_img_pc, #dialog_img_phone {
     max-height: 85vh;
     max-width: 90vw;
-    align-self: start;
+    align-self: center;
     justify-self: center;
-    grid-column: 1 / 4;
+    transition: opacity 500ms;
+    transition-delay: 50ms;
+    opacity: 0;
+    object-fit: cover;
+    box-shadow: 0 0 14px 0 mediumpurple;
+}
+
+#dialog_img_phone {
+    display: none;
+    height: 200px;
+    width: 200px;
 }
 
 #to_youtube_container {
     justify-self: center;
-    align-self: center;
-    width: 75%;
-    grid-column: 2;
+    align-self: start;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-#to_youtube_video {
-    width: 100%;
-}
+
 
 @keyframes show_image {
     from {
@@ -168,6 +177,14 @@ div.item_container:hover {
 @media (min-width:0px) and (max-width: 767px) {
     #grid_container {
         grid-template-columns: 1fr;
+    }
+
+    #dialog_img_pc {
+        display: none;
+    }
+
+    #dialog_img_phone {
+        display: block;
     }
 }
 
