@@ -12,18 +12,20 @@ const data = [
     {
         name: "hulk.jpg",
         video: "http://www.youtube.com",
+        wide: false,
         __proto__: pattern
     },
     {
-        name: "hulk.jpg",
+        name: "hulk_new.jpg",
+        video: "http://www.google.com",
+        wide: false,
+        __proto__: pattern
+    },
+    {
+        name: "flowers.jpg",
+        phone_view: "flowers_vertical.jpg",
         video: false,
+        wide: true,
         __proto__: pattern
     },
-    {
-        name: "hulk.jpg",
-        video: "https://www.google.com",
-        __proto__: pattern
-    }
 ]
-
-console.log(data[0].get_info());
