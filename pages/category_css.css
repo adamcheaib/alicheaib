@@ -36,6 +36,14 @@ header > a {
     text-decoration: none;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-shadow: none;
+    transition: text-shadow 200ms, color 200ms;
+}
+
+header > a:hover {
+    text-shadow: 2px 0 5px lightblue;
+    color: #80d5ff;
+    transition: text-shadow 200ms, color 200ms;
 }
 
 #current_page {
@@ -49,6 +57,25 @@ header > a {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 -4px 12px 5px #a380c1;
+    text-shadow: 2px 0 6px lightblue;
+    overflow:hidden;
+    animation-name: clicked_title;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes clicked_title {
+    0% {
+        font-size: 0;
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        height: auto;
+        width: 200px;
+    }
 }
 
 #category_gallery {
