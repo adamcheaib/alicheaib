@@ -17,33 +17,55 @@ header {
     grid-row: 2;
     grid-column: 1 / 3;
     background: linear-gradient(to right, var(--darkerPurple), var(--purple));
-    height: max-content;
-    /*padding: 10px 0 10px 0;*/
-    display: flex;
-    justify-content: space-evenly;
-    font-size: clamp(22px, 3vw, 30px);
     align-self: end;
     position: sticky;
-    width: 100%;
     top: 0;
     z-index: 100000000;
     transition: top 200ms;
 }
 
-
-header > a {
-    color: white;
-    text-decoration: none;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-shadow: none;
-    transition: text-shadow 200ms, color 200ms;
+header #pc_btns_container {
+    display: flex;
+    justify-content: center;
+    gap: clamp(200px, 5vw, 300px);
+    flex-grow: 1;
 }
 
-header > a:hover {
+header #pc_btns_container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: text-shadow 200ms;
+}
+
+header #pc_menu_logo {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    background: url("https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+header #pc_header_btns {
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    transition: text-shadow 200ms, color 200ms;
+    display: flex;
+    gap: 30px;
+    font-size: clamp(16px, 3vw, 24px);
+}
+
+header #pc_btns_container a:hover {
     text-shadow: 2px 0 5px lightblue;
     color: #80d5ff;
     transition: text-shadow 200ms, color 200ms;
+}
+
+header #phone_menu {
+    display: none;
 }
 
 #current_page {
@@ -53,13 +75,12 @@ header > a:hover {
     color: white;
     background-color: #764c97;
     margin: 0;
-    width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 -4px 12px 5px #a380c1;
     text-shadow: 2px 0 6px lightblue;
-    overflow:hidden;
+    overflow: hidden;
     animation-name: clicked_title;
     animation-duration: 500ms;
     animation-fill-mode: forwards;
@@ -74,14 +95,23 @@ header > a:hover {
 
     100% {
         height: auto;
-        width: 200px;
+        width: 125px;
     }
 }
 
 #category_gallery {
     margin-top: 20px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#page_title {
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    display: none;
 }
 
 #grid_container {
@@ -104,7 +134,6 @@ header > a:hover {
     animation-duration: 1000ms;
     animation-timing-function: ease-in;
     animation-fill-mode: forwards;
-    animation-delay: 200ms;
     position: relative;
     top: 100px;
 }
@@ -133,7 +162,7 @@ div.item_container > * {
 }
 
 .item_container > a {
-    justify-self:end;
+    justify-self: end;
     height: max-content;
     width: max-content;
 }
@@ -147,14 +176,14 @@ div.item_container > * {
 div.item_container:hover {
     cursor: pointer;
     transform: scale(1.01);
-    box-shadow:  0px 0px 30px 10px #7119ae;
+    box-shadow: 0px 0px 30px 10px #7119ae;
     border: solid 1px #7119ae;
     transition: border 200ms, box-shadow 200ms, transform 200ms;
 }
 
 #overlay {
-    height: 100vh;
-    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -180,7 +209,8 @@ div.item_container:hover {
     min-height: 100vh;
     width: 100vw;
     position: absolute;
-    background: rgba(0,0,0,0.6);
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
@@ -199,16 +229,9 @@ div.item_container:hover {
 
 #dialog_img_phone {
     display: none;
-    /*height: 200px;*/
-    /*width: 200px;*/
 }
 
 #to_youtube_container {
-    /*justify-self: center;*/
-    /*align-self: start;*/
-    /*width: 100%;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
     color: white;
     font-weight: bold;
     font-size: clamp(18px, 2vw, 23px);
@@ -220,6 +243,9 @@ div.item_container:hover {
     width: clamp(165px, 50%, 250px)
 }
 
+#mobile_overlay {
+    display: none;
+}
 
 
 @keyframes show_image {
@@ -245,9 +271,14 @@ div.item_container:hover {
     }
 }
 
-@media (min-width:0px) and (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 767px) {
     #grid_container {
         grid-template-columns: 1fr;
+        margin-top: 50px;
+    }
+
+    #page_title {
+        display: block;
     }
 
     #dialog_img_pc {
@@ -257,10 +288,206 @@ div.item_container:hover {
     #dialog_img_phone {
         display: block;
     }
+
+    header #pc_btns_container {
+        display: none;
+    }
+
+    header #phone_menu {
+        height: 42px;
+        display: flex;
+        justify-content: end;
+        padding-right: 12px;
+    }
+
+    header #phone_hamburger_container {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        gap:6px;
+        width: max-content;
+        padding: 0 10px 0 10px;
+    }
+
+    header .line {
+        width: 35px;
+        height: 4px;
+        background-color: white;
+    }
+
+    #mobile_overlay {
+        top: 0;
+        left: -100vw;
+        display: grid;
+        grid-template-rows: 0.2fr 0.8fr;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: 99999999999999999999;
+        transition: left 300ms;
+    }
+
+    .show_phone_overlay {
+        animation-name: phone_menu_entrance;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+    }
+
+    #phone_close_btn {
+        font-size: 48px;
+        color: white;
+        justify-self: center;
+        grid-row: 1;
+        grid-column: 1;
+        align-self: end;
+        font-family: Arial;
+        width: 200px;
+        display: flex;
+        justify-content: end;
+    }
+
+    #phone_btns {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-self: center;
+        justify-self: center;
+        grid-row: 1 / 3;
+        grid-column: 1;
+    }
+
+    #phone_btns > a{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 28px;
+    }
 }
 
-@media (min-width:768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     #grid_container {
         grid-template-columns: 1fr 1fr;
+    }
+
+
+
+    #page_title {
+        display: block;
+        position: relative;
+        top: 50px;
+    }
+
+    #dialog_img_pc {
+        display: none;
+    }
+
+    #dialog_img_phone {
+        display: block;
+    }
+
+    header #pc_btns_container {
+        display: none;
+    }
+
+    header #phone_menu {
+        height: 42px;
+        display: flex;
+        justify-content: end;
+        padding-right: 12px;
+    }
+
+    header #phone_hamburger_container {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        gap:6px;
+        width: max-content;
+        padding: 0 10px 0 10px;
+    }
+
+    header .line {
+        width: 35px;
+        height: 4px;
+        background-color: white;
+    }
+
+    #mobile_overlay {
+        top: 0;
+        left: -100vw;
+        display: grid;
+        grid-template-rows: 0.2fr 0.8fr;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: 99999999999999999999;
+        transition: left 300ms;
+    }
+
+    .show_phone_overlay {
+        animation-name: phone_menu_entrance;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
+    }
+
+    #phone_close_btn {
+        font-size: 48px;
+        color: white;
+        justify-self: center;
+        grid-row: 1;
+        grid-column: 1;
+        align-self: end;
+        font-family: Arial;
+        width: 200px;
+        display: flex;
+        justify-content: end;
+    }
+
+    #phone_btns {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-self: center;
+        justify-self: center;
+        grid-row: 1 / 3;
+        grid-column: 1;
+    }
+
+    #phone_btns > a{
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 28px;
+    }
+}
+
+@keyframes phone_menu_entrance {
+    0% {
+        width: 0;
+        opacity: 0.3;
+        /*filter: blur(59px);*/
+        backdrop-filter: blur(60px);
+        background: linear-gradient(white, black);
+    }
+
+    50% {
+        opacity: 0.6;
+        filter: blur(30px);
+        /*backdrop-filter: blur(30px);*/
+        background: linear-gradient(gray, black);
+    }
+
+    80% {
+        filter: blur(10px);
+    }
+
+    100% {
+        left: 0;
+        width: 100vw;
+        opacity: 1;
+        filter: blur(0);
+        backdrop-filter: blur(0);
+        background: rgba(0,0,0, 0.8);
     }
 }

@@ -13,12 +13,14 @@ const data = [
         name: "hulk.jpg",
         video: "http://www.youtube.com",
         wide: false,
+        instagram_link: "https://www.instagram.com",
         __proto__: pattern
     },
     {
         name: "hulk_new.jpg",
         video: "http://www.google.com",
         wide: false,
+        instagram_link: false,
         __proto__: pattern
     },
     {
@@ -26,6 +28,7 @@ const data = [
         phone_view: "flowers_vertical.jpg",
         video: false,
         wide: true,
+        instagram_link: "https://www.9gag.com",
         __proto__: pattern
     },
 ]

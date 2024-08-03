@@ -3,6 +3,10 @@ section {
     height: 75vh;
 }
 
+#section_3d, #section_design {
+    margin-top: 3px;
+}
+
 .section_showoff {
     display: grid;
     grid-template-columns: 1fr;
@@ -32,7 +36,7 @@ section {
 }
 
 .to_category_btn {
-    background-color: black;
+    background-color: var(--purple);
     padding: 10px 0 10px 0;
     box-sizing: border-box;
     width: clamp(150px, 20vw, 325px);
