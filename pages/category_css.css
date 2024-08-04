@@ -294,20 +294,38 @@ div.item_container:hover {
     }
 
     header #phone_menu {
-        height: 42px;
-        display: flex;
+        height: max-content;
+        display: grid;
         justify-content: end;
         padding-right: 12px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
     }
 
     header #phone_hamburger_container {
+        justify-self: end;
+        align-self: center;
+        grid-row: 1;
+        grid-column: 1;
         display: flex;
         flex-direction: column;
         align-items: end;
         justify-content: center;
-        gap:6px;
+        gap: 6px;
         width: max-content;
         padding: 0 10px 0 10px;
+    }
+
+    header #phone_menu_logo {
+        justify-self: center;
+        align-self: center;
+        background-color: red;
+        height: 50px;
+        width: 50px;
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     header .line {
@@ -334,6 +352,13 @@ div.item_container:hover {
         animation-fill-mode: forwards;
     }
 
+    .show_phone_btns {
+        animation-name: menu_btns_blur;
+        animation-duration: 600ms;
+        animation-delay: 300ms;
+        animation-fill-mode: forwards;
+    }
+
     #phone_close_btn {
         font-size: 48px;
         color: white;
@@ -341,7 +366,6 @@ div.item_container:hover {
         grid-row: 1;
         grid-column: 1;
         align-self: end;
-        font-family: Arial;
         width: 200px;
         display: flex;
         justify-content: end;
@@ -357,7 +381,7 @@ div.item_container:hover {
         grid-column: 1;
     }
 
-    #phone_btns > a{
+    #phone_btns > a {
         color: white;
         text-decoration: none;
         font-weight: bold;
@@ -369,7 +393,6 @@ div.item_container:hover {
     #grid_container {
         grid-template-columns: 1fr 1fr;
     }
-
 
 
     #page_title {
@@ -391,20 +414,37 @@ div.item_container:hover {
     }
 
     header #phone_menu {
-        height: 42px;
-        display: flex;
+        display: grid;
         justify-content: end;
         padding-right: 12px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
     }
 
     header #phone_hamburger_container {
+        justify-self: end;
+        align-self: center;
+        grid-row: 1;
+        grid-column: 1;
         display: flex;
         flex-direction: column;
         align-items: end;
         justify-content: center;
-        gap:6px;
+        gap: 6px;
         width: max-content;
         padding: 0 10px 0 10px;
+    }
+
+    header #phone_menu_logo {
+        justify-self: center;
+        align-self: center;
+        background-color: red;
+        height: 50px;
+        width: 50px;
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     header .line {
@@ -454,11 +494,15 @@ div.item_container:hover {
         grid-column: 1;
     }
 
-    #phone_btns > a{
+    #phone_btns > a {
         color: white;
         text-decoration: none;
         font-weight: bold;
         font-size: 28px;
+        animation-name: menu_btns_blur;
+        animation-duration: 300ms;
+        animation-delay: 500ms;
+        animation-fill-mode: forwards;
     }
 }
 
@@ -466,7 +510,6 @@ div.item_container:hover {
     0% {
         width: 0;
         opacity: 0.3;
-        /*filter: blur(59px);*/
         backdrop-filter: blur(60px);
         background: linear-gradient(white, black);
     }
@@ -474,7 +517,6 @@ div.item_container:hover {
     50% {
         opacity: 0.6;
         filter: blur(30px);
-        /*backdrop-filter: blur(30px);*/
         background: linear-gradient(gray, black);
     }
 
@@ -488,6 +530,16 @@ div.item_container:hover {
         opacity: 1;
         filter: blur(0);
         backdrop-filter: blur(0);
-        background: rgba(0,0,0, 0.8);
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@keyframes menu_btns_blur {
+    0% {
+        filter: blur(50px)
+    }
+
+    100% {
+        filter: blur(0px);
     }
 }

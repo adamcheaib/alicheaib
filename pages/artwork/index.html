@@ -22,6 +22,7 @@
         </div>
     </div>
     <div id="phone_menu">
+        <div id="phone_menu_logo"></div>
         <div id="phone_hamburger_container">
             <div class="line"></div>
             <div class="line"></div>
@@ -104,8 +105,10 @@
     const phone_menu = document.getElementById("phone_menu");
     const phone_overlay = document.getElementById("mobile_overlay");
 
+    // Add a close button on the X button!
     phone_menu.onclick = () => {
         phone_overlay.className = "show_phone_overlay";
+        phone_overlay.querySelector("#phone_btns").className = "show_phone_btns";
     }
 
     function open_instagram_link(event) {
@@ -122,10 +125,8 @@
 
     window.addEventListener("orientationchange", (event) => {
         if (screen.orientation.type === "portrait-primary" && rotate_logo.classList.contains("showing")) {
-            console.log("PORTRAIT");
             rotate_logo.style.display = "inline";
         } else if (screen.orientation.type === "landscape-primary" && rotate_logo.classList.contains("showing")) {
-            console.log("LANDSCAPE");
             rotate_logo.style.display = "none";
         }
     });
