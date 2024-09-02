@@ -5,65 +5,48 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./main.css">
-    <link rel="stylesheet" href="landing_css/sections.css">
-    <script defer src="./index.js"></script>
+    <title>Portfolio | Ali Cheaib Design</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/landingPage.css">
 </head>
 <body>
-<section id="hero_section">
-    <div id="overlay"></div>
-    <div id="hero_upper_contents">
-        <div id="names">
-            <h1>Ali Cheaib</h1>
-            <h2>alic.design</h2>
-        </div>
-    </div>
+<div id="wrapper">
+    <nav style="background-color: purple;"></nav>
+    <div id="landingPageContent">
+        <h1 id="landingTitle">ALI CHEAIB</h1>
+        <p id="landingDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores laudantium nemo quas repudiandae saepe.
+            Accusantium amet animi at delectus est, explicabo illo labore magnam modi nulla, porro soluta tempore
+            voluptatibus.</p>
+        <div id="toArt">
+            <a href="#" class="categoryIcon">
+                <img src="" alt="icon">
+                <p class="categoryName">Design</p>
+                <i class="categoryDescription">Description here</i>
+            </a>
 
-    <div id="hero_bottom_contents">
-        <div id="hero_see_more">
-            <p>Want to see more?</p>
-            <a href="#">
-                <button>Click here</button>
+            <a href="#" class="categoryIcon">
+                <img src="" alt="icon">
+                <p class="categoryName">Something</p>
+                <i class="categoryDescription">Description here</i>
+            </a>
+
+            <a href="#" class="categoryIcon">
+                <img src="" alt="icon">
+                <p class="categoryName">3D</p>
+                <i class="categoryDescription">Description here</i>
+            </a>
+
+            <a href="#" class="categoryIcon">
+                <img src="" alt="icon">
+                <p class="categoryName">Speed Art</p>
+                <i class="categoryDescription">Description here</i>
             </a>
         </div>
-
-        <header>
-            <a href="#section_3d">3D</a><a href="#section_artwork">Artwork</a><a href="#section_design">Design</a>
-        </header>
     </div>
-</section>
 
-<section id="section_artwork" class="section_showoff">
-    <video autoplay loop class="category_video" src="./media/roy.webm"></video>
-    <div class="to_category_container">
-        <a class="to_category_btn" href="./pages/artwork/">Artwork</a>
-        <p class="to_category_description">Discover my artwork</p>
-    </div>
-</section>
+</div>
 
-<section id="section_3d" class="section_showoff">
-    <video autoplay loop class="category_video" src="./media/roy.webm"></video>
-    <div class="to_category_container">
-        <a class="to_category_btn" href="./pages/3d/">3D</a>
-        <p class="to_category_description">this is my 3d art!</p>
-    </div>
-</section>
-
-<section id="section_design" class="section_showoff">
-    <video autoplay loop class="category_video" src="./media/roy.webm"></video>
-    <div class="to_category_container">
-        <a class="to_category_btn" href="./pages/design/">
-            Design
-        </a>
-        <p class="to_category_description">wow so beautiful</p>
-    </div>
-</section>
-<footer>
-    <h1>Interested in my work?</h1>
-    <a href="./pages/contact/">
-        <button>Contact me</button>
-    </a>
-</footer>
+<script src="./js/renderNav.js"></script>
+<script src="./js/index.js"></script>
 </body>
 </html>

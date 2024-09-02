@@ -1,0 +1,27 @@
+#landingPageContent {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#landingDescription {
+    text-align: center;
+}
+
+#toArt {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 75px 10px 0 10px;
+    box-sizing: border-box;
+}
+
+.categoryIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: solid 1px blue;
+}

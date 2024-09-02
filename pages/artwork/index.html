@@ -5,218 +5,41 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Artwork</title>
-    <link rel="stylesheet" href="../category_css.css">
+    <title>Artwork | Ali Cheaib Design</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/artwork.css">
 </head>
 <body>
-<header>
-    <div id="pc_btns_container">
-        <div id="pc_menu_logo"></div>
+<div id="wrapper">
+    <div id="artworkIntroTexts">
+        <h1>Hello Artwork</h1>
+        <p>On the other hand. Your might is over!</p>
+    </div>
 
-        <div id="pc_header_btns">
-            <a href="../3d/">3D</a>
-            <a href="" id="current_page">Artwork</a>
-            <a href="../design/">Design</a>
-            <a href="../design/">Speed Art</a>
-            <a href="../design/">Contact</a>
+    <div id="artworkGallery">
+        <div class="artworkImages">
+            <div class="artworkLeft">
+                <div class="leftFirst"></div>
+                <div class="leftSecond"></div>
+            </div>
+        </div>
+
+        <div class="artworkImages">
+            <div class="artworkCenter">
+                <div id="centerImage"></div>
+            </div>
+        </div>
+
+        <div class="artworkImages">
+            <div class="artworkRight">
+                <div class="rightFirst"></div>
+                <div class="rightSecond"></div>
+            </div>
         </div>
     </div>
-    <div id="phone_menu">
-        <div id="phone_menu_logo"></div>
-        <div id="phone_hamburger_container">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </div>
-</header>
-<section id="category_gallery">
-        <h1 id="page_title">Hello World</h1>
-    <div id="grid_container">
-    </div>
-</section>
-
-<div id="overlay">
-    <img id="rotate_logo" src="../pages_media/rotate_logo.jpeg" alt="">
-    <img id="dialog_img_pc"
-         src="https://png.pngtree.com/thumb_back/fw800/background/20230720/pngtree-blue-and-purple-neon-star-3d-art-background-with-a-cool-image_3705286.jpg"
-         alt="">
-    <img id="dialog_img_phone" src="" alt="">
-    <a id="to_youtube_container" href="https://www.google.com" target="_blank">
-        Titta på YouTube!
-    </a>
-    <div id="shadow_background"></div>
 </div>
 
-
-<div id="mobile_overlay">
-    <div id="phone_close_btn">X</div>
-    <div id="phone_btns">
-        <a href="">Home</a>
-        <a href="">3D</a>
-        <a href="">Artwork</a>
-        <a href="">Design</a>
-        <a href="">Speed Art</a>
-        <a href="">Contact</a>
-    </div>
-</div>
-<script src="../data.js"></script>
-<script>
-
-    data.forEach(item => {
-        const item_data = item.get_info();
-
-        const parent_div = document.createElement("div");
-        parent_div.classList.add(...["item_container", "hidden"]);
-
-        const icon_img = document.createElement("img");
-        icon_img.className = "creation";
-        icon_img.src = item_data.phone_img;
-        icon_img.dataset.pc_img = item_data.pc_img;
-        icon_img.dataset.wide = item.wide;
-        icon_img.dataset.instagram_link = item.instagram_link;
-
-        const youtube_icon_container = document.createElement("a");
-        youtube_icon_container.target = "_blank";
-
-        const youtube_icon = document.createElement("img");
-        youtube_icon.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCE8Ofe3duyxd5_LVklR-R-vql2jCiX_LtUw&s";
-
-        youtube_icon_container.appendChild(youtube_icon);
-
-        parent_div.appendChild(icon_img);
-        if (item_data.video !== false) {
-            youtube_icon_container.href = item_data.video;
-            parent_div.appendChild(youtube_icon_container);
-        }
-
-        document.getElementById("grid_container").appendChild(parent_div);
-
-    })
-
-    const all_images = document.querySelectorAll(".item_container");
-    const overlay_pc = document.getElementById("overlay");
-    const overlay_img_pc = overlay_pc.querySelector("#dialog_img_pc");
-    const overlay_img_phone = overlay_pc.querySelector("#dialog_img_phone");
-    const overlay_shadow_background = document.getElementById("shadow_background");
-    const header = document.querySelector("header");
-    const rotate_logo = document.getElementById("rotate_logo");
-
-    const phone_menu = document.getElementById("phone_menu");
-    const phone_overlay = document.getElementById("mobile_overlay");
-
-    // Add a close button on the X button!
-    phone_menu.onclick = () => {
-        phone_overlay.className = "show_phone_overlay";
-        phone_overlay.querySelector("#phone_btns").className = "show_phone_btns";
-    }
-
-    function open_instagram_link(event) {
-        if (overlay_pc.dataset.instagram_link !== "") {
-            window.open(overlay_pc.dataset.instagram_link, "_blank").focus();
-        } else {
-            console.log("NO LINK ATTACHED")
-        }
-    }
-
-    overlay_img_pc.onclick = open_instagram_link;
-    overlay_img_phone.onclick = open_instagram_link;
-
-
-    window.addEventListener("orientationchange", (event) => {
-        if (screen.orientation.type === "portrait-primary" && rotate_logo.classList.contains("showing")) {
-            rotate_logo.style.display = "inline";
-        } else if (screen.orientation.type === "landscape-primary" && rotate_logo.classList.contains("showing")) {
-            rotate_logo.style.display = "none";
-        }
-    });
-
-    let negative_header = "-100px";
-    let positive_header = "0px";
-
-    overlay_shadow_background.onclick = close_overlay;
-
-    function close_overlay(event) {
-        overlay_pc.style.visibility = "hidden";
-        header.style.visibility = "visible";
-        overlay_pc.style.backdropFilter = "blur(0)";
-        overlay_img_pc.style.opacity = 0;
-        overlay_img_phone.style.opacity = 0;
-        document.body.classList.toggle("prevent_scroll");
-        rotate_logo.style.display = "none";
-        rotate_logo.className = "";
-    }
-
-    function show_overlay(event) {
-        if (event.target.className === "creation") {
-            console.log(screen.orientation.type);
-            document.body.classList.toggle("prevent_scroll");
-            overlay_pc.style.backdropFilter = "blur(10px)";
-            header.style.visibility = "hidden";
-            overlay_pc.style.visibility = "visible";
-            overlay_img_pc.src = event.target.dataset.pc_img;
-            overlay_img_pc.style.opacity = 1;
-
-            const img_file_name = event.target.src.replace("mobile_imgs", "dialog_view");
-
-            overlay_img_phone.src = img_file_name;
-            overlay_img_phone.style.opacity = 1;
-
-            const item_video = event.currentTarget.querySelector("a");
-            const item_wide = event.target.dataset.wide;
-
-            if (event.target.dataset.instagram_link !== "false") {
-                overlay_pc.dataset.instagram_link = event.target.dataset.instagram_link;
-            } else {
-                overlay_pc.dataset.instagram_link = "";
-            }
-
-            if (item_video !== null) {
-                overlay_pc.querySelector("a").href = item_video.href;
-            }
-
-            if (item_wide === "true" && screen.orientation.type !== "landscape-primary") {
-                rotate_logo.style.display = "inline";
-                rotate_logo.classList.toggle("showing")
-            } else {
-                rotate_logo.style.display = "none";
-                rotate_logo.classList.toggle("showing");
-            }
-        }
-
-    }
-
-    all_images.forEach(item => {
-        item.style.opacity = 0;
-        item.onclick = show_overlay;
-
-        function show_image(target) {
-            let image_showing = target[0].isIntersecting;
-
-            if (image_showing === true) {
-                item.classList.remove("hidden");
-                item.classList.add("shown");
-            }
-        }
-
-        const ob = new IntersectionObserver(show_image);
-        ob.observe(item);
-
-    })
-    let previous_window_scroll = window.scrollY;
-    let scroll_timeout;
-    window.onscroll = () => {
-        clearTimeout(scroll_timeout)
-        if (window.scrollY > previous_window_scroll) {
-            header.style.top = negative_header;
-            setTimeout(() => previous_window_scroll = window.scrollY, 200);
-            scroll_timeout = setTimeout(() => header.style.top = "0", 100);
-        } else {
-            header.style.top = positive_header;
-            previous_window_scroll = window.scrollY;
-        }
-    }
-
-</script>
+<script src="/js/renderNav.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>
