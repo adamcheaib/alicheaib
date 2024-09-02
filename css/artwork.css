@@ -1,6 +1,18 @@
+/*
+
+*NOTE TO FUTURE SELF*
+
+The way this works is that
+
+*/
+
 :root {
     --mainHeight: 600px;
-    --halfSize: calc(var(--mainHeight) / 2) ;
+    --halfSize: calc(var(--mainHeight) / 2);
+    --tempWidth: 200px;
+    --tempMaxWidth: 500px;
+    --tempGap: 5px;
+    --mainGap: 8px;
 }
 
 #artworkIntroTexts {
@@ -8,17 +20,20 @@
 }
 
 #artworkGallery {
+    margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    gap: var(--mainGap);
     padding: 0 20px 0 20px;
+    max-width: 1200px;
 }
 
 .artworkImages {
-    height: var(--mainHeight);
-    width: 200px;
-    background-color: green;
     justify-self: center;
+}
+
+img {
+    width: 100%;
 }
 
 @media (min-width: 1px) and (max-width: 768px) {
@@ -27,7 +42,12 @@
     }
 
     .artworkImages {
-        width: 80vw;
-        max-width: 500px;
+        display: grid;
+        gap: 8px;
     }
+
+    img {
+        width: 80vw;
+    }
+
 }
