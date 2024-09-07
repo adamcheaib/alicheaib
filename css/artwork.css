@@ -7,16 +7,15 @@ The way this works is that
 */
 
 :root {
-    --mainHeight: 600px;
-    --halfSize: calc(var(--mainHeight) / 2);
-    --tempWidth: 200px;
-    --tempMaxWidth: 500px;
-    --tempGap: 5px;
     --mainGap: 8px;
 }
 
 #artworkIntroTexts {
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #artworkGallery {
@@ -32,8 +31,12 @@ The way this works is that
     justify-self: center;
 }
 
-img {
+.leftImages, .centerImages, .rightImages {
     width: 100%;
+}
+
+.leftImages:hover, .centerImages:hover, .rightImages:hover {
+    cursor: pointer;
 }
 
 @media (min-width: 1px) and (max-width: 768px) {

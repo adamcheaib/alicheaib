@@ -1,0 +1,71 @@
+#introTexts3d {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#introTexts3d h1 {
+    margin-bottom: 0;
+}
+
+#navigation3d {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#selectedFilter {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    bottom: 10px;
+    transition: position 500ms;
+}
+
+.modelsOptions {
+    transform: none;
+    transition: transform 500ms, position 500ms;
+}
+
+.modelsOptions:hover {
+    cursor: pointer;
+}
+
+.modelsOptions:not(#selectedFilter):hover {
+    transform: scale(1.2);
+    transition: transform 500ms;
+}
+
+.view3dContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    border: solid 1px black;
+    margin-inline: auto;
+}
+
+.image3D {
+    max-width: 100%;
+}
+
+.view3dContainer:not(.view) {
+    display: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    .view3dContainer {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
