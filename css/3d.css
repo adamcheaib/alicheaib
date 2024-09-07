@@ -57,8 +57,10 @@
     display: none;
 }
 
+/* Do not forget to change this part! Needs to be for <picture> instead! */
 img {
     max-width: 100%;
+    justify-self: center;
 }
 
 @media (min-width: 0px) and (max-width: 768px) {
