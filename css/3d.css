@@ -47,6 +47,8 @@
     max-width: 1200px;
     border: solid 1px black;
     margin-inline: auto;
+    padding: 0 10px 20px 10px;
+    box-sizing: border-box;
 }
 
 .image3D {
