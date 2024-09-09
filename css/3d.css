@@ -60,9 +60,11 @@
 }
 
 /* Do not forget to change this part! Needs to be for <picture> instead! */
-img {
+.renderedImage {
     max-width: 100%;
     justify-self: center;
+    height: 100%;
+    width: 100%;
 }
 
 @media (min-width: 0px) and (max-width: 768px) {

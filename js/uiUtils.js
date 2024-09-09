@@ -17,6 +17,7 @@ function renderPhoneMenu(menuOptions, logoSrc = testLink) {
     phoneMenuContainer.style.marginInline = "auto";
 
     const siteLogo = document.createElement("img");
+    siteLogo.id = "siteLogo";
     siteLogo.src = logoSrc;
     siteLogo.style.justifySelf = "center";
     siteLogo.style.alignSelf = "center";
@@ -91,3 +92,28 @@ function renderPhoneMenu(menuOptions, logoSrc = testLink) {
 }
 
 function renderPcMenu(menuOptions, logoSrc = testLink) {}
+
+function renderLoadingScreen(parentID) {
+    const loadingContainer = document.createElement("div");
+    loadingContainer.id = "loadingContainer";
+
+    loadingContainer.style.height = "100vh";
+    loadingContainer.style.width = "100vw";
+    loadingContainer.style.position = "fixed";
+    loadingContainer.style.top = "0";
+    loadingContainer.style.background = "rgba(0,0,0, 0.6)";
+    loadingContainer.style.display = "flex";
+    loadingContainer.style.flexDirection = "column";
+    loadingContainer.style.justifyContent = "center";
+    loadingContainer.style.alignItems = "center";
+
+    loadingContainer.innerHTML = `
+            <img src="../../media/etc/loading.gif" />
+            <h1 style="color: white;">Loading!</h1>
+`; // Replace with an animation or something!
+    document.getElementById(parentID).appendChild(loadingContainer);
+}
+
+function removeLoadingScreen(loadingID = "loadingContainer") {
+    document.getElementById(loadingID).remove();
+}

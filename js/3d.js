@@ -1,4 +1,5 @@
 "use strict"
+let url3D = "../../backend/backend.php?category=3d&subCategory=characters,models,products";
 
 const modelsOptionsBtns = document.querySelectorAll(".modelsOptions");
 
@@ -16,8 +17,40 @@ modelsOptionsBtns.forEach(btn => {
     })
 });
 
-fetch("/backend/backend.php?category=3d&subCategory=characters,models").then(r => r.json()).then(console.log);
 
-async function load_images(link) {
+async function load_images(url) {
+    renderLoadingScreen("wrapper");
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        removeLoadingScreen();
+        alert("Ooops... Something went wrong!");
+        return;
+    }
+
+    removeLoadingScreen();
+    const resource = await response.json();
+    console.log(resource);
+
+    for (const categoryName in resource) {
+        console.log(categoryName);
+        let parent = document.querySelector(`.view3dContainer[data-name="${categoryName}"]`);
+
+        resource[categoryName].forEach(image => {
+            console.log(image);
+            const phonePath = image.replace("pc", "phone");
+            console.log(phonePath)
+
+            const pictureContainer = document.createElement("picture");
+            pictureContainer;
+            pictureContainer.innerHTML = `
+                <source srcset="${phonePath}" media="(max-width: 768px)" />
+                <img class="renderedImage" src="${image}" />`;
+
+            parent.appendChild(pictureContainer);
+        });
+    }
 
 }
+
+load_images(url3D);

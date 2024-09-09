@@ -1,6 +1,7 @@
 <?php
 ini_set('display_errors', 1);
-function sendJSON($message, $httpCode = 200) {
+function sendJSON($message, $httpCode = 200)
+{
     header('Content-type: application/json');
     http_response_code($httpCode);
     echo json_encode($message);
@@ -16,7 +17,7 @@ The details for the API should look like this:
  * */
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$rootFolder = ".."; // Gets the name of the root folder. Issues with absolute path otherwise!
+$rootFolder = "../"; // Gets the name of the root folder. Issues with absolute path otherwise!
 
 if ($requestMethod != 'GET') {
     $message = ["message" => "RASTAMAN BLISS"];
@@ -38,17 +39,16 @@ if ($_GET["subCategory"] != null) {
         $images[$subCategory] = [];
 
         foreach ($scannedSubCategoryImages as $image) {
-            $images[$subCategory][] = $rootFolder . "/media/pc/$requestedCategory/$subCategory/$image";
+            $images[$subCategory][] = $rootFolder . "../../media/pc/$requestedCategory/$subCategory/$image";
         }
     }
-
 
     sendJSON($images);
 } else {
     // Code here for just pages with no categories!
     $scannedCategoryImages = array_slice(scandir($pathToCategory), 2);
     foreach ($scannedCategoryImages as $image) {
-        $images[] = "$pathToCategory/$image";
+        $images[] = "../$pathToCategory/$image";
     }
 
     sendJSON($images);
