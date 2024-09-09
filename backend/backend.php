@@ -16,26 +16,42 @@ The details for the API should look like this:
  * */
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$rootFolder = $_SERVER["DOCUMENT_ROOT"]; // Gets the name of the root folder. Issues with absolute path otherwise!
-
-
-$requestedCategory = $_GET["category"];
-$requestedFolders = array_slice($_GET, 1);
-
-if ($_GET["subCategory"] != null) {
-    echo "IT IS NOT NULL";
-    // Code here to fetch the different categories!
-} else {
-    // Code here for just pages with no categories!
-}
+$rootFolder = ".."; // Gets the name of the root folder. Issues with absolute path otherwise!
 
 if ($requestMethod != 'GET') {
     $message = ["message" => "RASTAMAN BLISS"];
     sendJSON($message, 404);
 }
 
-// This is just for reference!
-$imageDirectory = array_slice(scandir($rootFolder. "/media/pc"), 2);
-sendJSON(["images" => $imageDirectory]);
+$images = [];
+$requestedCategory = $_GET["category"];
+$subCategory = $_GET["subCategory"];
+$pathToCategory = "$rootFolder/media/pc/$requestedCategory";
+
+
+if ($_GET["subCategory"] != null) {
+    // Code here to fetch the different categories!
+    $subCategories = explode(",", $_GET["subCategory"]);
+
+    foreach ($subCategories as $subCategory) {
+        $scannedSubCategoryImages = array_slice(scandir("$pathToCategory/$subCategory"), 2);
+        $images[$subCategory] = [];
+
+        foreach ($scannedSubCategoryImages as $image) {
+            $images[$subCategory][] = $rootFolder . "/media/pc/$requestedCategory/$subCategory/$image";
+        }
+    }
+
+
+    sendJSON($images);
+} else {
+    // Code here for just pages with no categories!
+    $scannedCategoryImages = array_slice(scandir($pathToCategory), 2);
+    foreach ($scannedCategoryImages as $image) {
+        $images[] = "$pathToCategory/$image";
+    }
+
+    sendJSON($images);
+}
 
 ?>

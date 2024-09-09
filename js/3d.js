@@ -16,8 +16,8 @@ modelsOptionsBtns.forEach(btn => {
     })
 });
 
-fetch("/backend/backend.php?test=name&rasta=man").then(r => r.json()).then(console.log);
+fetch("/backend/backend.php?category=3d&subCategory=characters,models").then(r => r.json()).then(console.log);
 
-async function load_images() {
+async function load_images(link) {
 
 }
