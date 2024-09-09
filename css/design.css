@@ -1,0 +1,96 @@
+#introTextsDesign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+#introTextsDesign h1 {
+    margin-bottom: 0;
+}
+
+#navigationDesign {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#selectedFilter {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    bottom: 10px;
+    transition: position 500ms;
+}
+
+.designOptions {
+    transform: none;
+    transition: transform 500ms, position 500ms;
+}
+
+.designOptions:hover {
+    cursor: pointer;
+}
+
+.designOptions:not(#selectedFilter):hover {
+    transform: scale(1.2);
+    transition: transform 500ms;
+}
+
+.viewDesignContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    border: solid 1px black;
+    margin-inline: auto;
+    padding: 0 10px 20px 10px;
+    box-sizing: border-box;
+}
+
+.viewDesignContainer:not(.view) {
+    display: none;
+}
+
+/* Do not forget to change this part! Needs to be for <picture> instead! */
+.renderedImage {
+    max-width: 100%;
+    max-height: 500px;
+    justify-self: center;
+    width: 100%;
+}
+
+.designTitle {
+    text-align: center;
+    font-size: clamp(15px, 3vw, 32px);
+}
+
+.designDescription {
+    text-align: center;
+    font-size: clamp(12px, 2vw, 21px);
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    .viewDesignContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-left: 2px;
+        padding-right: 2px;
+        height: max-content;
+    }
+
+   .designImageContainer {
+       display: flex;
+       align-items: center;
+       flex-direction: column;
+   }
+
+    .renderedImage {
+        justify-self: center;
+        width: 100%;
+        max-height: 800px;
+    }
+}

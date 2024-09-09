@@ -36,19 +36,23 @@ async function load_images(url) {
         console.log(categoryName);
         let parent = document.querySelector(`.view3dContainer[data-name="${categoryName}"]`);
 
-        resource[categoryName].forEach(image => {
-            console.log(image);
-            const phonePath = image.replace("pc", "phone");
-            console.log(phonePath)
+        if (resource[categoryName].length !== 0) {
+            resource[categoryName].forEach(image => {
+                console.log(image);
+                const phonePath = image.replace("pc", "phone");
+                console.log(phonePath)
 
-            const pictureContainer = document.createElement("picture");
-            pictureContainer;
-            pictureContainer.innerHTML = `
+                const pictureContainer = document.createElement("picture");
+                pictureContainer;
+                pictureContainer.innerHTML = `
                 <source srcset="${phonePath}" media="(max-width: 768px)" />
                 <img class="renderedImage" src="${image}" />`;
 
-            parent.appendChild(pictureContainer);
-        });
+                parent.appendChild(pictureContainer);
+            });
+        } else {
+            parent.innerHTML = "<h1 style='grid-column: 1 / 4; text-align: center;'>This sub-category is currently empty!</h1>";
+        }
     }
 
 }
