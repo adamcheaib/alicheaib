@@ -30,17 +30,13 @@ async function load_images(url) {
 
     removeLoadingScreen();
     const resource = await response.json();
-    console.log(resource);
 
     for (const categoryName in resource) {
-        console.log(categoryName);
         let parent = document.querySelector(`.view3dContainer[data-name="${categoryName}"]`);
 
         if (resource[categoryName].length !== 0) {
             resource[categoryName].forEach(image => {
-                console.log(image);
                 const phonePath = image.replace("pc", "phone");
-                console.log(phonePath)
 
                 const pictureContainer = document.createElement("picture");
                 pictureContainer;

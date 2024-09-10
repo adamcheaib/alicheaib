@@ -2,11 +2,28 @@ body {
     margin: 0;
 }
 
-
-nav {
-    padding: 5px;
-}
-
 hr {
     color: white;
+}
+
+#phoneMenuContainer, #phoneMenuPopup {
+    display: none !important;
+}
+
+@media (max-width: 1200px) {
+    #phoneMenuContainer {
+        display: grid !important;
+    }
+
+    #phoneMenuPopup {
+        display: flex !important;
+    }
+
+    #pcMenuContainer {
+        display: none !important;
+    }
+
+    nav {
+        padding: 5px;
+    }
 }

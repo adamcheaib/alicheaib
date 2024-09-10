@@ -91,7 +91,78 @@ function renderPhoneMenu(menuOptions, logoSrc = testLink) {
     document.querySelector("nav").appendChild(phoneMenuContainer);
 }
 
-function renderPcMenu(menuOptions, logoSrc = testLink) {}
+function renderPcMenu(menuOptions, logoSrc = testLink) {
+    const pcMenuContainer = document.createElement("div");
+    pcMenuContainer.id = "pcMenuContainer";
+
+    pcMenuContainer.style.width = "100%";
+    pcMenuContainer.style.maxWidth = "1200px";
+    pcMenuContainer.style.display = "flex";
+    pcMenuContainer.style.justifyContent = "space-between";
+    pcMenuContainer.style.alignItems = "center";
+    pcMenuContainer.style.marginInline = "auto";
+
+    const siteLogo = document.createElement("img");
+    siteLogo.src = logoSrc;
+    siteLogo.style.width = "100px";
+    siteLogo.style.height = "50px";
+    siteLogo.style.padding = "5px";
+    pcMenuContainer.appendChild(siteLogo);
+
+    const pcButtonsContainer = document.createElement("div");
+    pcButtonsContainer.style.display = "flex";
+    pcButtonsContainer.style.justifyContent = "space-evenly";
+    pcButtonsContainer.id = "pcButtonsContainer";
+
+    menuOptions.forEach(menuBtn => {
+        const pcMenuBtn = document.createElement("a");
+        pcMenuBtn.className = "pcMenuBtn";
+        pcMenuBtn.innerHTML = `<p style="margin: 0; display: flex; align-items: center; justify-content: center; width: 100%">${menuBtn}</p>`;
+
+        let link = "/";
+
+        if (menuBtn !== "Home") link = `/pages/${menuBtn.toLowerCase()}`;
+
+
+        pcMenuBtn.href = link;
+        pcMenuBtn.style.backgroundColor = "purple"
+        pcMenuBtn.style.padding = "10px";
+        pcMenuBtn.style.boxSizing = "border-box";
+        pcMenuBtn.style.display = "flex";
+        pcMenuBtn.style.alignItems = "center;"
+        pcMenuBtn.style.justifyContent = "center;"
+        pcMenuBtn.style.textAlign = "center;"
+        pcMenuBtn.style.fontSize = "13px";
+        pcMenuBtn.style.width = "100px";
+        pcMenuBtn.style.textDecoration = "none";
+        pcMenuBtn.style.color = "white";
+
+        console.log(window.location.href)
+        console.log(menuBtn.toLowerCase())
+        if (window.location.href.includes(menuBtn.toLowerCase())) {
+            pcMenuBtn.style.backgroundColor = "red";
+            pcMenuBtn.className = "currentPage";
+        }
+
+
+
+        pcButtonsContainer.appendChild(pcMenuBtn);
+        pcMenuBtn.onmouseenter = (event) => {
+            if (event.target.className !== "currentPage") event.target.style.backgroundColor = "rebeccapurple";
+        }
+        pcMenuBtn.onmouseleave = (event) => {
+            if (event.target.className !== "currentPage") event.currentTarget.style.backgroundColor = "purple";
+        }
+    });
+
+
+    pcMenuContainer.appendChild(pcButtonsContainer);
+    document.querySelector("nav").appendChild(pcMenuContainer);
+
+    const navHeight = document.querySelector("nav").offsetHeight;
+    console.log(navHeight);
+    document.querySelectorAll(".pcMenuBtn").forEach(pcMenuBtn => pcMenuBtn.style.height = navHeight + "px");
+}
 
 function renderLoadingScreen(parentID) {
     const loadingContainer = document.createElement("div");

@@ -1,0 +1,33 @@
+
+#contactTitle {
+    margin: 200px 0 50px 0;
+    text-align: center;
+}
+
+#contactPages {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+#wrapper {
+    padding-bottom: 30px;
+}
+
+.linkToSocial {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    #contactPages {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .linkToSocial > img {
+        width: 250px;
+        height: 250px;
+    }
+}
