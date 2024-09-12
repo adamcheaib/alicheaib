@@ -3,7 +3,7 @@ let url3D = "../../backend/backend.php?category=3d&subCategory=characters,models
 
 const modelsOptionsBtns = document.querySelectorAll(".modelsOptions");
 
-modelsOptionsBtns.forEach(btn => {
+modelsOptionsBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
 
         document.getElementById("selectedFilter").id = "";
@@ -28,8 +28,8 @@ async function load_images(url) {
         return;
     }
 
-    removeLoadingScreen();
     const resource = await response.json();
+    let imageIndex = 0;
 
     for (const categoryName in resource) {
         let parent = document.querySelector(`.view3dContainer[data-name="${categoryName}"]`);
@@ -39,18 +39,21 @@ async function load_images(url) {
                 const phonePath = image.replace("pc", "phone");
 
                 const pictureContainer = document.createElement("picture");
-                pictureContainer;
+                // pictureContainer;
                 pictureContainer.innerHTML = `
                 <source srcset="${phonePath}" media="(max-width: 768px)" />
-                <img class="renderedImage" src="${image}" />`;
+                <img data-imageindex=${imageIndex} class="renderedImage" src="${image}" />`;
 
+                pictureContainer.querySelector("img").onclick = appendImagesToCarousel; // DONT FORGET TO ADJUST THIS PART!
                 parent.appendChild(pictureContainer);
+                imageIndex++;
             });
         } else {
             parent.innerHTML = "<h1 style='grid-column: 1 / 4; text-align: center;'>This sub-category is currently empty!</h1>";
         }
     }
-
+    removeLoadingScreen();
+    renderCarousel();
 }
 
 load_images(url3D);

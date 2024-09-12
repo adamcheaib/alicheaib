@@ -137,13 +137,10 @@ function renderPcMenu(menuOptions, logoSrc = testLink) {
         pcMenuBtn.style.textDecoration = "none";
         pcMenuBtn.style.color = "white";
 
-        console.log(window.location.href)
-        console.log(menuBtn.toLowerCase())
         if (window.location.href.includes(menuBtn.toLowerCase())) {
             pcMenuBtn.style.backgroundColor = "red";
             pcMenuBtn.className = "currentPage";
         }
-
 
 
         pcButtonsContainer.appendChild(pcMenuBtn);
@@ -160,8 +157,15 @@ function renderPcMenu(menuOptions, logoSrc = testLink) {
     document.querySelector("nav").appendChild(pcMenuContainer);
 
     const navHeight = document.querySelector("nav").offsetHeight;
-    console.log(navHeight);
     document.querySelectorAll(".pcMenuBtn").forEach(pcMenuBtn => pcMenuBtn.style.height = navHeight + "px");
+
+    let currentPage = document.querySelector(".currentPage");
+    if (currentPage === null || currentPage === undefined) {
+        const homeBtn = document.querySelector(".pcMenuBtn");
+        homeBtn.className = "currentPage";
+        homeBtn.style.backgroundColor = "red";
+
+    }
 }
 
 function renderLoadingScreen(parentID) {
@@ -187,4 +191,122 @@ function renderLoadingScreen(parentID) {
 
 function removeLoadingScreen(loadingID = "loadingContainer") {
     document.getElementById(loadingID).remove();
+}
+
+function renderCarousel(parent = "body") {
+    const carouselOverlay = document.createElement("div");
+    carouselOverlay.id = "carouselOverlay";
+
+    const carouselLeftArrow = document.createElement("div");
+    carouselLeftArrow.id = "carouselLeftArrow";
+
+    const carouselRightArrow = document.createElement("div");
+    carouselRightArrow.id = "carouselRightArrow";
+
+    const carouselContainer = document.createElement("div");
+    carouselContainer.id = "carouselContainer";
+    const carouselWidth = 800;
+    const carouselHeight = 800;
+
+    carouselLeftArrow.onclick = () => {
+        carouselContainer.scrollLeft -= carouselWidth;
+    };
+
+    carouselRightArrow.onclick = () => {
+        carouselContainer.scrollLeft += carouselWidth;
+    }
+
+
+    carouselOverlay.style.display = "none";
+    carouselOverlay.style.justifyContent = "space-evenly";
+    carouselOverlay.style.alignItems = "center";
+    carouselOverlay.style.position = "fixed";
+    carouselOverlay.style.top = "0";
+    carouselOverlay.style.left = "0";
+    carouselOverlay.style.height = "100vh";
+    carouselOverlay.style.width = "100vw";
+    carouselOverlay.style.background = "rgba(0,0,0, 0.6)";
+
+    carouselOverlay.onclick = hideCarousel;
+
+    carouselContainer.style.height = carouselHeight + "px";
+    carouselContainer.style.width = carouselWidth + "px";
+    carouselContainer.style.display = "flex";
+    carouselContainer.style.overflowX = "hidden";
+    carouselContainer.style.backgroundColor = "red";
+    carouselContainer.style.scrollSnapType = "x mandatory";
+    carouselContainer.style.scrollBehavior = "smooth";
+
+    carouselLeftArrow.innerHTML = "<h1  style='color: white;'><--</h1>";
+    carouselRightArrow.innerHTML = "<h1 style='color: white;'>--></h1>";
+
+
+    carouselOverlay.appendChild(carouselLeftArrow);
+    carouselOverlay.appendChild(carouselContainer);
+    carouselOverlay.appendChild(carouselRightArrow);
+
+    document.querySelector(parent).appendChild(carouselOverlay);
+}
+
+function showCarousel(event) {
+    const carouselOverlay = document.getElementById("carouselOverlay");
+    carouselOverlay.style.display = "flex";
+}
+
+function hideCarousel(event) {
+    const carouselContainer = document.getElementById("carouselContainer");
+    const carouselOverlay = document.getElementById("carouselOverlay");
+    if (event.target.id === "carouselOverlay") {
+        carouselOverlay.style.display = "none";
+    }
+}
+
+function appendImagesToCarousel(event) {
+    const carouselContainer = document.getElementById("carouselContainer")
+    carouselContainer.innerHTML = "";
+
+
+    const subCategories = ["characters", "prints", "logos", "websites", "models", "products"];
+    const clickedImage = event.target;
+    const parentName = clickedImage.parentElement.parentElement.dataset.name;
+
+    if (subCategories.includes(parentName)) {
+        // Code here for sections that do belong in a subcategory!
+
+        const allImagesInCategory = [...document.querySelectorAll(`.view3dContainer[data-name="${parentName}"] > picture`)];
+
+        allImagesInCategory.forEach(picture => {
+            const imgSrc = picture.querySelector("img").src;
+
+            const carouselImageDiv = document.createElement("div");
+            carouselImageDiv.className = "carouselImage";
+            carouselImageDiv.style.height = "100%";
+            carouselImageDiv.style.background = `url(${imgSrc})`;
+            carouselImageDiv.style.backgroundSize = "cover";
+            carouselImageDiv.style.backgroundPosition = "center";
+            carouselImageDiv.style.scrollSnapAlign = "center";
+
+            carouselContainer.appendChild(carouselImageDiv);
+        })
+
+        showCarousel();
+        const carouselContainerHeight = carouselContainer.offsetHeight;
+        const carouselContainerWidth = carouselContainer.offsetWidth;
+
+        const allCarouselImages = [...document.querySelectorAll(".carouselImage")];
+        allCarouselImages.forEach(image => {
+            image.style.minWidth = carouselContainerWidth + "px";
+            image.style.height = carouselContainerHeight + "px";
+        });
+
+        const imageIndex = parseInt(event.target.dataset.imageindex);
+        scrollCarouselToClickedImage(carouselContainerWidth, imageIndex);
+    } else {
+        // Code here if this does not belong in a subcategory such as Artwork!
+    }
+}
+
+function scrollCarouselToClickedImage(width, index) {
+    const carouselContainer = document.getElementById("carouselContainer");
+    carouselContainer.scrollLeft = width * index;
 }

@@ -49,12 +49,9 @@ async function load_images(url) {
         return;
     }
 
-    removeLoadingScreen();
     const resource = await response.json();
-    console.log(resource);
 
     for (const categoryName in resource) {
-        console.log(categoryName);
         let parent = document.querySelector(`.viewDesignContainer[data-name="${categoryName}"]`);
 
         if (resource[categoryName].length !== 0) {
@@ -85,6 +82,7 @@ async function load_images(url) {
 
                 parent.appendChild(designImageContainer);
             });
+            removeLoadingScreen();
         } else {
             parent.innerHTML = "<h1 style='grid-column: 1 / 4; text-align: center;'>This sub-category is currently empty!</h1>";
         }
