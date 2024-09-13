@@ -49,9 +49,10 @@
     margin-inline: auto;
     padding: 0 10px 20px 10px;
     box-sizing: border-box;
+    grid-auto-rows: 1fr;
 }
 
-.image3D {
+.renderedImage {
     max-width: 100%;
 }
 

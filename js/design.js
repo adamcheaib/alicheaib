@@ -50,6 +50,7 @@ async function load_images(url) {
     }
 
     const resource = await response.json();
+    let imageIndex = 0;
 
     for (const categoryName in resource) {
         let parent = document.querySelector(`.viewDesignContainer[data-name="${categoryName}"]`);
@@ -65,7 +66,10 @@ async function load_images(url) {
 
                 picture.innerHTML = `
                 <source srcset="${phonePath}" media="(max-width: 768px)" />
-                <img class="renderedImage" src="${image}" />`;
+                <img class="renderedImage" data-imageindex="${imageIndex}" src="${image}" />`;
+
+                picture.querySelector("img").onclick = appendImagesToCarousel;
+                imageIndex++;
 
                 const title = document.createElement("h3");
                 title.className = "designTitle";
@@ -83,6 +87,7 @@ async function load_images(url) {
                 parent.appendChild(designImageContainer);
             });
             removeLoadingScreen();
+            renderCarousel();
         } else {
             parent.innerHTML = "<h1 style='grid-column: 1 / 4; text-align: center;'>This sub-category is currently empty!</h1>";
         }

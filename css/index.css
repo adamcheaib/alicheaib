@@ -1,5 +1,23 @@
+@keyframes entrance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 body {
     margin: 0;
+    animation-name: entrance;
+    animation-duration: 1s;
+}
+
+nav {
+    animation-name: entrance;
+    animation-duration: 1s;
+    animation-delay: 1s;
 }
 
 hr {

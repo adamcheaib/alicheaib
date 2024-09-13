@@ -26,11 +26,18 @@ if ($requestMethod != 'GET') {
 
 $images = [];
 $requestedCategory = $_GET["category"];
-$subCategory = $_GET["subCategory"];
-$pathToCategory = "$rootFolder/media/pc/$requestedCategory";
+$subCategory = null;
 
 
-if ($_GET["subCategory"] != null) {
+
+if (key_exists("subCategory", $_GET) != false) {
+    $subCategory = $_GET["subCategory"];
+}
+
+$pathToCategory = "$rootFolder" . "media/pc/$requestedCategory/";
+
+
+if ($subCategory != null) {
     // Code here to fetch the different categories!
     $subCategories = explode(",", $_GET["subCategory"]);
 
@@ -47,10 +54,12 @@ if ($_GET["subCategory"] != null) {
 } else {
     // Code here for just pages with no categories!
     $scannedCategoryImages = array_slice(scandir($pathToCategory), 2);
+
     foreach ($scannedCategoryImages as $image) {
         $images[] = "../$pathToCategory/$image";
     }
 
+    shuffle($images);
     sendJSON($images);
 }
 

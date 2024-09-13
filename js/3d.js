@@ -18,7 +18,7 @@ modelsOptionsBtns.forEach((btn) => {
 });
 
 
-async function load_images(url) {
+async function loadImages(url) {
     renderLoadingScreen("wrapper");
     const response = await fetch(url);
 
@@ -39,7 +39,7 @@ async function load_images(url) {
                 const phonePath = image.replace("pc", "phone");
 
                 const pictureContainer = document.createElement("picture");
-                // pictureContainer;
+
                 pictureContainer.innerHTML = `
                 <source srcset="${phonePath}" media="(max-width: 768px)" />
                 <img data-imageindex=${imageIndex} class="renderedImage" src="${image}" />`;
@@ -56,4 +56,4 @@ async function load_images(url) {
     renderCarousel();
 }
 
-load_images(url3D);
+loadImages(url3D);
