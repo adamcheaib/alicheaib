@@ -3,6 +3,10 @@ let url3D = "../../backend/backend.php?category=3d&subCategory=characters,models
 
 const modelsOptionsBtns = document.querySelectorAll(".modelsOptions");
 
+const componentsArray = [
+    "../../media/components/"
+];
+
 modelsOptionsBtns.forEach((btn) => {
     btn.addEventListener("click", (event) => {
 

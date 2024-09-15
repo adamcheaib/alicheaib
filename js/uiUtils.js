@@ -318,5 +318,11 @@ function createImagesForCarousel(picture) {
     carouselContainer.appendChild(carouselImageDiv);
 }
 
-let age = 27;
-let age_str = "27";
+function append3dImages(event) {
+    // Fetches all the images from the 3D folder with the same name!
+    // An array with the different paths can be utilized.
+
+    // 3D bilderna ska alla ha en attribut med ett namn
+    // Det finns en 3d-komponenter mapp där varje bild har namn-siffra ex. pokemon-1.png
+    // Appendar bilder baserat på namnet.
+}

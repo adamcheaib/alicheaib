@@ -25,16 +25,21 @@ async function loadImages(url) {
 
         pictureContainer.innerHTML = `
             <source srcset="${phonePath}" media="(max-width: 768px)" />
-            <img data-imageindex="${imageIndex}" class="${columnClass}Images renderedImage" src="${imagePath}" />`;
+            <img class="${columnClass}Images renderedImage" src="${imagePath}" />`;
 
-        imageIndex++;
         columnIndex++;
         if (columnIndex === columnOrder.length) columnIndex = 0;
 
-        console.log(pictureContainer);
         pictureContainer.querySelector("img").onclick = appendImagesToCarousel;
         parent.appendChild(pictureContainer);
     });
+
+    const allAppendedImages = document.querySelectorAll(".renderedImage");
+    allAppendedImages.forEach(image => {
+        image.dataset.imageindex = imageIndex;
+        imageIndex++;
+    })
+    console.log(document.querySelectorAll(".renderedImage"));
 
     removeLoadingScreen();
     renderCarousel();
