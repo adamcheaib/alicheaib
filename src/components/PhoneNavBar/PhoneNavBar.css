@@ -1,0 +1,15 @@
+.phone-nav {
+    background-color: #4F0069;
+    padding: 10px 0 10px 0;
+}
+
+.hamburger {
+    width: 40px;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+.hamburger * {
+    border-bottom: 2px solid white;
+    height: 2px;
+}
