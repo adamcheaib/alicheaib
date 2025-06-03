@@ -1,0 +1,30 @@
+:root {
+    --bireme: #4F0069;
+}
+
+.nav-link {
+    color: white !important;
+    border-radius: 0 !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active {
+    border-radius: 0 !important;
+    background-color: white !important;
+    color: var(--bireme) !important;
+}
+
+
+.pc-menu-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*TODO: Replace with logo*/
+.pc-menu {
+    display: flex;
+    justify-content: end;
+}

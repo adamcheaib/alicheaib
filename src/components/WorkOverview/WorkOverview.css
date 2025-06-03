@@ -1,0 +1,44 @@
+.workOverview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 75px;
+}
+
+.image-stack {
+    margin-top: 25px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+/* TODO: adjust for PC so it becomes different sizes! Check Bootstrap! */
+.work-image {
+    width: 100%;
+    max-width: 800px;
+    transition: filter 100ms;
+}
+
+.work-image:hover {
+    cursor: pointer;
+}
+
+.work-image:active {
+    filter: blur(10px);
+    transition: filter 300ms;
+}
+
+.clickable {
+    color: black;
+}
+
+
+.clickable:visited {
+    color: black;
+}
+
+.clickable:hover {
+    color: black;
+}

@@ -1,14 +1,17 @@
+import "./Footer.css"
+
+
 function Footer(): React.ReactElement {
     return (
         <footer>
             <img alt="Logo"></img>
 
-            <div style={{marginTop: "20px", marginBottom: "20px", display: "flex", flexDirection: "column", gap: "5px"}}>
-                <p style={{margin: "0"}}>About me</p>
-                <p style={{margin: "0"}}>Artwork</p>
-                <p style={{margin: "0"}}>Graphic Design</p>
-                <p style={{margin: "0"}}>3D</p>
-            </div>
+            <ul>
+                <li>About me</li>
+                <li>Artwork</li>
+                <li>Graphic Design</li>
+                <li>3D</li>
+            </ul>
 
             <p>Bireme Studios</p>
         </footer>

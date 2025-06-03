@@ -2,7 +2,6 @@ import "./PhoneNavBar.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useContext} from "react"
 import type {ReactNode} from "react";
-// import PhoneMenu from "../PhoneMenu/PhoneMenu.tsx";
 import {ContextPhoneMenu, type ShowPhoneMenuProps} from "../../contexts/ContextPhoneMenu.tsx";
 
 function PhoneNavBar(): React.ReactElement {
@@ -20,7 +19,6 @@ function PhoneNavBar(): React.ReactElement {
             <div></div>
         </div>
     );
-
 
     return (
         <nav className="phone-nav d-grid">

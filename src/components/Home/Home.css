@@ -1,0 +1,51 @@
+body {
+    background: url("/media/images/background-home.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: color 500ms, text-shadow 200ms;
+}
+
+a:hover {
+    color: #4F0069;
+    transition: color 500ms;
+    animation: blurEffect 300ms forwards linear;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+}
+
+@keyframes blurEffect {
+    0% {
+        filter: blur(20px);
+    }
+
+    50% {
+        filter: blur(10px);
+    }
+
+    100% {
+        filter: blur(0);
+    }
+}
