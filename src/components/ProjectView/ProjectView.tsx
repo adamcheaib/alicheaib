@@ -33,8 +33,10 @@ function ProjectView(): ReactElement {
 
     for (let i = 0; i < queuedProject!.turnables.length; i++) {
         const turnablePath: string = "/material/" + queuedProject!.projectPath + "/" + queuedProject!.turnables[i];
+
+        // The playsInline attribute makes sure that the video can be played without fullscreen!
         const turnableElement: ReactElement = (
-            <video controls={false} loop key={i} muted autoPlay>
+            <video controls={false} loop={true} key={i} muted={true} autoPlay={true} playsInline={true}>
                 <source src={turnablePath} type="video/mp4"/>
             </video>
         );
