@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 75px;
+    padding-bottom: 25px;
 }
 
 .image-stack {
@@ -14,24 +15,57 @@
     margin-bottom: 15px;
 }
 
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
 /* TODO: adjust for PC so it becomes different sizes! Check Bootstrap! */
 .work-image {
     width: 100%;
-    max-width: 800px;
-    transition: filter 100ms;
+    max-width: 450px;
+    transition: transform 150ms;
 }
 
 .work-image:hover {
     cursor: pointer;
+    transition: filter 300ms;
 }
 
 .work-image:active {
-    filter: blur(10px);
-    transition: filter 300ms;
+    filter: blur(8px);
+    transition: filter 200ms;
 }
 
 .clickable {
     color: black;
+    transition: transform 300ms;
+    transform: scale(1);
+    text-decoration: none;
+    display: grid;
+
+    & * {
+        grid-row: 1;
+        grid-column: 1;
+    }
+}
+
+.clickable-name {
+    z-index: 1;
+    color: black;
+    align-self: center;
+    letter-spacing: 5px;
+    font-size: clamp(12px, 1vw, 16px);
+    justify-self: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0 0 20px 0;
 }
 
 
@@ -41,4 +75,6 @@
 
 .clickable:hover {
     color: black;
+    transform: scale(1.03);
+    transition: transform 300ms;
 }

@@ -15,6 +15,7 @@ import ProjectView from "./components/ProjectView/ProjectView.tsx";
 function App() {
     const isMobile: boolean = useMediaQuery({maxWidth: "768px"});
     const [show, setShow] = useState(false);
+    document.body.classList.add("mainBg");
 
     return (
         <>

@@ -1,12 +1,16 @@
-import "./WorkOverview.css"
+import "./WorkOverview.css";
 import {ContextCategory} from "../../contexts/ContextCategory.tsx";
 import {useContext} from "react";
 import type {Categories, project} from "../../contexts/ContextCategory.tsx";
 import {useParams} from "react-router";
 import {Stack, Container} from "react-bootstrap";
 import type {ReactElement} from "react";
+import {bgRemover} from "../../utils/utils.tsx";
+import {useMediaQuery} from "react-responsive";
 
 function WorkOverview(): ReactElement {
+    const isMobile: boolean = useMediaQuery({maxWidth: "990px"});
+    bgRemover();
     const categories: Categories = useContext(ContextCategory);
     if (!categories) throw new Error("Category context not found");
 
@@ -24,8 +28,8 @@ function WorkOverview(): ReactElement {
         const {projectId, projectName, projectPath} = categoryProjects[i];
 
         const post: ReactElement = (
-            <a href={"./" + projectId + "/"} className="clickable">
-                <p style={{margin: 0, fontSize: "32px"}}>{projectName}</p>
+            <a href={"./" + projectId + "/"} className="clickable" key={i}>
+                <p className="clickable-name">{projectName}</p>
                 <img className="work-image" key={i} src={"/material/" + projectPath + "/main.webp"} alt="Rastaman" />
             </a>
         )
@@ -35,12 +39,14 @@ function WorkOverview(): ReactElement {
     return (
         <>
             <Container className="workOverview">
+                <a href="../" style={{marginBottom: "35px"}}>
+                    <button className="projectBackBtn">Back to categories</button>
+                </a>
                 <h1>{categories[categoryName].name}</h1>
                 <p>{categories[categoryName].description}</p>
 
-                <Stack className="image-stack">
-                    {reactElements}
-                </Stack>
+                {isMobile ? <Stack className="image-stack">{reactElements}</Stack> : <div className="image-grid">{reactElements}</div>}
+
             </Container>
         </>
     )

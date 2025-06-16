@@ -9,8 +9,10 @@ function PcNavBar(): React.ReactElement {
         <Nav variant="pills" defaultActiveKey="link-1"
              style={{backgroundColor: "var(--bireme)"}}>
             <Container className="pc-menu-container">
-                <img alt="Logo" src="/logoipsum.png"
-                     style={{height: "50px", width: "50px", marginLeft: "40px", margin: "5px 0 5px 0"}}/>
+                <a href="/">
+                    <img alt="Logo" src="/logoipsum.png"
+                         style={{height: "50px", width: "50px", marginLeft: "40px", margin: "5px 0 5px 0"}}/>
+                </a>
 
                 <div className="pc-menu">
 

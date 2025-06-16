@@ -1,9 +1,6 @@
-body {
-    background: url("/media/images/background-home.png");
+.mainBg {
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background: url("/media/images/background-home.png");
 }
 
 section {
@@ -15,13 +12,13 @@ section {
     gap: 20px;
 }
 
-a {
+.homeLink {
     text-decoration: none;
     color: black;
     transition: color 500ms, text-shadow 200ms;
 }
 
-a:hover {
+.homeLink:hover {
     color: #4F0069;
     transition: color 500ms;
     animation: blurEffect 300ms forwards linear;

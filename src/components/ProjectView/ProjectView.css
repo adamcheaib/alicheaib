@@ -1,3 +1,12 @@
+:root {
+    --asset-size: 550px;
+    --reference-size: 365px;
+}
+
+.whiteBg {
+    background-color: white !important;
+}
+
 .projectContainer {
     display: flex;
     flex-direction: column;
@@ -15,12 +24,29 @@
     margin-top: 75px;
 }
 
-img {
+.assetImg {
     width: 100%;
-    max-width: 800px;
+    max-width: var(--asset-size);
 }
 
-video {
+.referenceImg {
     width: 100%;
-    max-width: 800px;
+    max-width: var(--reference-size);
+}
+
+.projectText {
+    width: 100%;
+    max-width: var(--asset-size);
+}
+
+.threeD-video {
+    width: 100%;
+    max-width: var(--asset-size);
+}
+
+
+
+#turnables {
+    display: flex;
+    flex-direction: column;
 }
